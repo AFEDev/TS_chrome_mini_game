@@ -1,0 +1,80 @@
+.game {
+  width: 600px;
+  height: 200px;
+  border-bottom: 3px solid rgb(7, 6, 6);
+  margin: auto;
+  background-color: yellow;
+  overflow: hidden;
+}
+
+.dog {
+  width: 50px;
+  height: 50px;
+  background-image: url(../img/move1.png);
+  background-size: 50px 50px;
+  position: relative;
+  top: 155px;
+  left: 10px;
+  animation: dogMove 0.2s infinite;
+}
+
+@keyframes dogMove {
+  0% {
+    background-image: url(../img/move1.png);
+  }
+  50% {
+    background-image: url(../img/move2.png);
+  }
+  100% {
+    background-image: url(../img/move1.png);
+  }
+}
+
+.cat {
+  width: 40px;
+  height: 40px;
+  background-image: url(../img/cat.png);
+  background-size: 40px 40px;
+  position: relative;
+  top: 110px;
+  left: 650px;
+}
+
+.catGo {
+  animation: catMove 1.5s infinite linear;
+  animation-delay: 1s;
+}
+
+@keyframes catMove {
+  0% {
+    left: 580px;
+  }
+  100% {
+    left: -20px;
+  }
+}
+
+.jump {
+  animation: jump 0.5s linear;
+}
+
+@keyframes jump {
+  0% {
+    top: 150px;
+  }
+  30% {
+    top: 100px;
+    background-image: url(../img/jump.png);
+  }
+  50% {
+    top: 50px;
+    background-image: url(../img/jump.png);
+  }
+  80% {
+    top: 100px;
+    background-image: url(../img/jump.png);
+  }
+  100% {
+    top: 150px;
+  }
+}

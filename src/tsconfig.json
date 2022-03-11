@@ -1,0 +1,9 @@
+{
+    "compilerOptions" : {
+        "target" : "ES6",
+        "removeComments": true,
+        "outDir": "../dist",
+        "watch": true,
+        //"outFile": "main.js"
+    }
+}
