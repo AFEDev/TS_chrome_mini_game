@@ -1,0 +1,24 @@
+{
+  "name": "ts_chrome_mini_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "dead-server --port=3000 --host=localhost"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AFEDev/TS_chrome_mini_game.git"
+  },
+  "keywords": [],
+  "author": "Algirdas <algirduj@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AFEDev/TS_chrome_mini_game/issues"
+  },
+  "homepage": "https://github.com/AFEDev/TS_chrome_mini_game#readme",
+  "devDependencies": {
+    "dead-server": "^1.0.6"
+  }
+}
