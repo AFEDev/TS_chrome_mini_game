@@ -1,11 +1,47 @@
-const dog = document.querySelector('.dog');
-const cat = document.querySelector('.cat');
+import { countTimer } from "../dist/timer.js";
 
-document.addEventListener('keydown', function(event){
+
+const dog = document.querySelector('.dog') as HTMLElement;
+const cat = document.querySelector('.cat') as HTMLElement;
+const button = document.querySelector('button') as HTMLButtonElement;
+
+
+/** 
+ * interact with keybord by pressing any key
+ */
+document.addEventListener<'keydown'>('keydown', function():void{
     jump();
-})    
+}) 
 
-function jump (){
+/** Interact with mobile devices with touchscreen */
+
+document.addEventListener('touchstart', function():void{
+    jump();
+}) 
+
+button.addEventListener('click', function():void {
+startGame();
+})
+
+
+function startGame ():void {
+    countTimer.timer("reset");
+    countTimer.timer("start");
+    button.style.display = 'none';
+    dog.classList.add('dogGo');
+    dog.style.animationPlayState = "running";
+    cat.style.animation = 'none';
+    cat.offsetWidth;
+    cat.style.animation = 'catMove 1.5s infinite linear';
+}
+
+
+
+/**
+ * Starts "jump" animation, by adding .jump class. Timer fnc remove class after seted intervall of time to make 'jump' possible more then one time.
+ */
+
+function jump ():void{
     if (!dog.classList.contains('jump') ) {
         dog.classList.add('jump')
     }
@@ -13,14 +49,19 @@ function jump (){
         dog.classList.remove('jump')
     }, 500)
 }
- 
-let isDogAlive = setInterval (function() {
+
+/**
+ * Fnc that chech if dog didn't toch the chat. It's get ofjects positinions on interval of time and chech if they didnt touch each other. 
+ */
+
+    setInterval (function():void {
     let dogTop = parseInt(window.getComputedStyle(dog).getPropertyValue('top'));
     let catLeft = parseInt(window.getComputedStyle(cat).getPropertyValue('left'));
 
-if (catLeft < 50 && catLeft > 0 && dogTop >= 140) {
-    alert("GAME OVER!!!");
-    cat.classList.remove("catGo");
-    cat.classList.add("catGo");
-    }
-} ,10) 
+    if (catLeft < 60 && catLeft > 0 && dogTop >= 140) {
+        countTimer.timer("stop");
+        cat.style.animationPlayState = "paused";
+        dog.style.animationPlayState = "paused";
+        button.style.display = '';
+        }
+    } ,10) 
