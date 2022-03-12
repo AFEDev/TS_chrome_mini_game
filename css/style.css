@@ -1,10 +1,29 @@
+.game_over {
+  width: 100%;
+  height: 200px;
+  margin: auto;
+  overflow: hidden;
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .game {
   width: 600px;
   height: 200px;
   border-bottom: 3px solid rgb(7, 6, 6);
   margin: auto;
-  background-color: yellow;
+  background-color: rgb(251, 251, 163);
   overflow: hidden;
+}
+
+.timer {
+  left: 50%;
+  top: 5%;
+  position: absolute;
 }
 
 .dog {
@@ -15,6 +34,9 @@
   position: relative;
   top: 155px;
   left: 10px;
+}
+
+.dogGo {
   animation: dogMove 0.2s infinite;
 }
 
@@ -38,12 +60,12 @@
   position: relative;
   top: 110px;
   left: 650px;
+  animation-delay: 2s;
 }
 
-.catGo {
+/* .catGo {
   animation: catMove 1.5s infinite linear;
-  animation-delay: 1s;
-}
+} */
 
 @keyframes catMove {
   0% {
@@ -63,18 +85,42 @@
     top: 150px;
   }
   30% {
-    top: 100px;
+    top: 90px;
     background-image: url(../img/jump.png);
   }
   50% {
-    top: 50px;
+    top: 35px;
     background-image: url(../img/jump.png);
   }
   80% {
-    top: 100px;
+    top: 90px;
     background-image: url(../img/jump.png);
   }
   100% {
     top: 150px;
   }
+}
+
+button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
 }
