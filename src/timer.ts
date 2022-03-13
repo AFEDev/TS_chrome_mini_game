@@ -1,8 +1,9 @@
+
 export const countTimer = {
     id: 0,
     sec: 0,
     timer: function (mode:string):void {
-      const timerEl = document.querySelector(".timer");
+      const timerEl = document.getElementById("score");
       switch (mode) {
         case "reset":
           timerEl.innerHTML = "0000";

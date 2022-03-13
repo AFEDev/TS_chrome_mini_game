@@ -4,6 +4,8 @@ import { countTimer } from "../dist/timer.js";
 const dog = document.querySelector('.dog') as HTMLElement;
 const cat = document.querySelector('.cat') as HTMLElement;
 const button = document.querySelector('button') as HTMLButtonElement;
+const score = document.getElementById('top') as HTMLElement;
+const timerEl = document.getElementById('score');
 
 
 /** 
@@ -33,6 +35,7 @@ function startGame ():void {
     cat.style.animation = 'none';
     cat.offsetWidth;
     cat.style.animation = 'catMove 1.5s infinite linear';
+    score.innerHTML = localStorage.getItem("score")
 }
 
 
@@ -54,14 +57,24 @@ function jump ():void{
  * Fnc that chech if dog didn't toch the chat. It's get ofjects positinions on interval of time and chech if they didnt touch each other. 
  */
 
-    setInterval (function():void {
+    const isDogAlive = setInterval (function():void {
     let dogTop = parseInt(window.getComputedStyle(dog).getPropertyValue('top'));
     let catLeft = parseInt(window.getComputedStyle(cat).getPropertyValue('left'));
 
     if (catLeft < 60 && catLeft > 0 && dogTop >= 140) {
         countTimer.timer("stop");
+
+        const currentScore = timerEl.innerHTML;
+        
+        if (parseInt(localStorage.getItem("score")) <= parseInt(currentScore) || !localStorage.getItem("score") ) {
+            localStorage.setItem("score", currentScore)
+            score.innerHTML = localStorage.getItem("score")
+        }
+
         cat.style.animationPlayState = "paused";
         dog.style.animationPlayState = "paused";
         button.style.display = '';
         }
     } ,10) 
+
+    
