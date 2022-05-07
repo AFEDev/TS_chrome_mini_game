@@ -26,6 +26,7 @@ html {
 body {
   font-family: "Fredoka";
   overflow: hidden;
+
 }
 
 p {
@@ -43,6 +44,7 @@ p {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .game {
@@ -52,6 +54,7 @@ p {
   margin: auto;
   background-color: rgb(251, 251, 163);
   overflow: hidden;
+  max-width: 100vw;
 }
 
 .timer {
