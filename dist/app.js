@@ -4,15 +4,33 @@ const cat = document.querySelector('.cat');
 const button = document.querySelector('button');
 const score = document.getElementById('top');
 const timerEl = document.getElementById('score');
+const reportWindowSize = () => {
+    let windowWidth = window.innerWidth;
+    let gameContainer = document.getElementById('game');
+    if (windowWidth >= 600) {
+        gameContainer.style.width = '600px';
+    }
+    else {
+        gameContainer.style.width = windowWidth + 'px';
+    }
+};
+window.addEventListener('resize', reportWindowSize);
+let gameStarted;
 document.addEventListener('keydown', function () {
-    jump();
+    gameStarted && jump();
 });
 document.addEventListener('touchstart', function () {
-    jump();
+    gameStarted && jump();
 });
 button.addEventListener('click', function () {
+    gameStarted = true;
     startGame();
 });
+const randomCat = () => {
+    let startTheCat = Math.random() + 1;
+    cat.style.animation = `catMove ${startTheCat}s infinite linear`;
+    console.log(startTheCat);
+};
 function startGame() {
     countTimer.timer("reset");
     countTimer.timer("start");
@@ -21,7 +39,7 @@ function startGame() {
     dog.style.animationPlayState = "running";
     cat.style.animation = 'none';
     cat.offsetWidth;
-    cat.style.animation = 'catMove 1.5s infinite linear';
+    randomCat();
     score.innerHTML = localStorage.getItem("score");
 }
 function jump() {
@@ -37,6 +55,7 @@ const isDogAlive = setInterval(function () {
     let catLeft = parseInt(window.getComputedStyle(cat).getPropertyValue('left'));
     if (catLeft < 60 && catLeft > 0 && dogTop >= 140) {
         countTimer.timer("stop");
+        gameStarted = false;
         const currentScore = timerEl.innerHTML;
         if (parseInt(localStorage.getItem("score")) <= parseInt(currentScore) || !localStorage.getItem("score")) {
             localStorage.setItem("score", currentScore);
@@ -45,5 +64,10 @@ const isDogAlive = setInterval(function () {
         cat.style.animationPlayState = "paused";
         dog.style.animationPlayState = "paused";
         button.style.display = '';
+    }
+    if (catLeft < -40) {
+        cat.style.animation = 'none';
+        cat.offsetWidth;
+        randomCat();
     }
 }, 10);
